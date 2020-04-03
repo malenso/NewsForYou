@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, state, style, animate } from '@angular/animations';
 
+import { NewsService } from '../services/news/news.service'
+
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
@@ -15,7 +17,7 @@ import { trigger, transition, state, style, animate } from '@angular/animations'
       transition(':leave',
         animate(600, style({opacity: 0})))
     ])
-  ]
+  ],
 })
 export class WelcomeComponent implements OnInit {
   count = 0;
@@ -27,9 +29,13 @@ export class WelcomeComponent implements OnInit {
     'So I put this together for you'
   ];
 
-  constructor() { }
+  constructor(
+    protected newsService: NewsService
+  ) { }
 
   ngOnInit() {
+    console.log(1);
+    this.newsService.get('cats');
   }
 
   Increment() {
