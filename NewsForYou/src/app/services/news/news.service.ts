@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Article } from 'src/app/models/article';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,14 @@ export class NewsService {
     private http: HttpClient
   ) { }
 
-  public get(topic: string) {
+  getArticles(topic: string) {
     const key = '';
-    console.log(this.http.get(`https://newsapi.org/v2/top-headlines?q=${topic}&apiKey=${key}`));
+    const url = `https://newsapi.org/v2/top-headlines?q=${topic}&apiKey=${key}`;
+    console.log(this.http.get<Article[]>(url)
+      .map(a => {
+          let response: any = a;
+          response.map((x) => new Article(x));
+        }),
+      );
   }
 }
