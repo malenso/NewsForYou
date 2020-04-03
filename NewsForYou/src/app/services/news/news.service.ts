@@ -1,10 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Article } from 'src/app/models/article';
 
 @Injectable({
   providedIn: 'root'
+})
+
+@NgModule({
+  imports: [HttpClientModule]
 })
 export class NewsService {
 
@@ -13,7 +17,7 @@ export class NewsService {
   ) { }
 
   public get(topic: string) {
-    const key = '66c280e1278e49edac439de6a314ba7f';
+    const key = '';
     return this.http.get<Article[]>(`https://newsapi.org/v2/top-headlines?q=${topic}&apiKey=${key}`);
   }
 }
