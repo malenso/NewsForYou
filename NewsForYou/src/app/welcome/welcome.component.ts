@@ -35,7 +35,7 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit() {
     console.log(1);
-    this.newsService.get('cats');
+    this.newsService.GetArticles('cats');
   }
 
   Increment() {

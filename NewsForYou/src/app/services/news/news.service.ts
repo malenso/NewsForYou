@@ -14,7 +14,7 @@ export class NewsService {
     private http: HttpClient
   ) { }
 
-  getArticles(topic: string) {
+  GetArticles(topic: string) {
     const key = '';
     const url = `https://newsapi.org/v2/top-headlines?q=${topic}&apiKey=${key}`;
     console.log(this.http.get<Article[]>(url)
