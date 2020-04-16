@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
+
 import { Article } from 'src/app/models/article';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'; // maps observable to response, requires pipe after rxjs upgrade
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class NewsService {
+  response;
 
   constructor(
     private http: HttpClient
@@ -18,10 +20,11 @@ export class NewsService {
     const key = '';
     const url = `https://newsapi.org/v2/top-headlines?q=${topic}&apiKey=${key}`;
     console.log(this.http.get<Article[]>(url)
-      .map(a => {
-          let response: any = a;
-          response.map((x) => new Article(x));
-        }),
-      );
+
+    this.http.get(url)
+    .subscribe(response => {
+      console.log(response);
+      return response;
+    });
   }
 }
