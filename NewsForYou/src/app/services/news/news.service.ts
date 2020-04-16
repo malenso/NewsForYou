@@ -19,12 +19,12 @@ export class NewsService {
   GetArticles(topic: string) {
     const key = '';
     const url = `https://newsapi.org/v2/top-headlines?q=${topic}&apiKey=${key}`;
-    console.log(this.http.get<Article[]>(url)
+    console.log(this.http.get<Article[]>(url));
 
-    this.http.get(url)
-    .subscribe(response => {
-      console.log(response);
-      return response;
-    });
+    // this.http.get(url)
+    // .subscribe(response => {
+    //   console.log(response);
+    //   return response;
+    // });
   }
 }
