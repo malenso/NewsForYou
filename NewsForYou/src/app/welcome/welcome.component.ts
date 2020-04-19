@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, transition, state, style, animate } from '@angular/animations';
 
 import { NewsService } from '../services/news/news.service';
-import { Article } from '../models/article';
-import { map } from 'rxjs/operators'; // maps observable to response, requires pipe after rxjs upgrade
 
 @Component({
   selector: 'app-welcome',
@@ -37,7 +35,10 @@ export class WelcomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.newsService.GetArticles('cats');
+    this.newsService.GetArticles('cats')
+      .subscribe((response: any) => {
+        this.articles = response;
+      });
   }
 
   Increment() {
