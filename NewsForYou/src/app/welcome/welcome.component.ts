@@ -35,10 +35,10 @@ export class WelcomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.newsService.GetArticles('cats')
+    this.newsService.GetArticles('corona')
       .subscribe((response: any) => {
         this.articles = response;
-      });
+      }, error => console.log(error));
   }
 
   Increment() {

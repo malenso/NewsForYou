@@ -3,7 +3,7 @@ export interface Article {
     title: string;
     description: string;
     url: string;
-    imageUrl: string;
-    publishDate: Date;
+    urlToImage: string;
+    publishedAt: Date;
     content: string;
 }

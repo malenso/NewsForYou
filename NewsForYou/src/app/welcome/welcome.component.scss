@@ -5,3 +5,37 @@ p {
     padding-top: 50vh;
     transition: all 5s;   
 }
+
+h1 {
+    color: #261929;
+}
+
+h2 {
+}
+
+.article-card {
+    background: #FEFDFC;
+    border: solid #FC620A;
+    border-width: 0 0 3px 3px;
+    display: inline-block;
+    //height: 25rem;
+    margin: 1rem;
+    padding: 1rem;
+    width: 25%;
+    transition: transform ease-in-out; //make variable
+    transition-duration: 100ms; //make variable
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+
+    img {
+        width: 100%;
+    }
+
+    span {
+        display: block;
+    }
+}
+
+//look at rapid design book in x drive
