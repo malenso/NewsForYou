@@ -4,9 +4,9 @@ import { trigger, transition, state, style, animate } from '@angular/animations'
 import { NewsService } from '../services/news/news.service';
 
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.scss'],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
   animations: [
     trigger('simpleFadeAnimation', [
       state('in', style({ opacity: 1 })),
@@ -19,7 +19,7 @@ import { NewsService } from '../services/news/news.service';
     ])
   ],
 })
-export class WelcomeComponent implements OnInit {
+export class HomeComponent implements OnInit {
   count = 0;
   articles: any[];
   narrative: string[] = [

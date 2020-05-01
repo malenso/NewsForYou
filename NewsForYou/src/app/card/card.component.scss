@@ -1,24 +1,7 @@
-p {
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
-    padding-top: 50vh;
-    transition: all 5s;   
-}
-
-h1 {
-    color: #261929;
-}
-
-h2 {
-}
-
 .article-card {
-    background: #FEFDFC;
     border: solid #FC620A;
     border-width: 0 0 3px 3px;
     display: inline-block;
-    //height: 25rem;
     margin: 1rem;
     padding: 1rem;
     width: 25%;
@@ -37,5 +20,3 @@ h2 {
         display: block;
     }
 }
-
-//look at rapid design book in x drive

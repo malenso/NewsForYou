@@ -1,0 +1,32 @@
+//variables, mixins, and any utility classes
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+$primaryColor: #09243E;
+$secondaryColor: #177989;
+$tertiaryColor: #A7A886;
+// $background: #FEFDFC;
+
+$font-family-serif: "Playfair Display", Times, serif !default;
+$font-family-sans: "Raleway", Arial, sans-serif !default;
+
+// body {
+//     background: $background;
+// }
+
+h1 {
+    font-family: $font-family-serif;
+    font-size: 4rem;
+}
+
+h2 {
+    font-family: $font-family-sans;
+}
+
+h3 {
+    font-family: $font-family-sans;
+}
+
+a {
+    text-decoration: none;
+}

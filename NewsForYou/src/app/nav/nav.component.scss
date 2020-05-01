@@ -1,0 +1,33 @@
+@import '../../styles/base';
+
+nav {
+    color: white;
+
+    .primary {
+        background: $primaryColor;
+        padding: 1rem 2rem;
+    }
+
+    .secondary {
+        background: $secondaryColor;
+        padding: .5em 2rem;
+
+        ul {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        li {
+            padding: .5rem;
+        }
+        
+        a { 
+            color: white;
+            padding: .5rem;
+            
+            &:hover {
+                border-bottom: solid .5rem $primaryColor;
+            }
+        }
+    }
+}
