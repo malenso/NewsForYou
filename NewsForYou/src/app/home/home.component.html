@@ -1,7 +1,15 @@
-<div *ngFor="let headline of headlines">
-    <app-thumbnail [headline]="headline"></app-thumbnail>
+<div class="banner">
+    <button><</button>
+
+    <div *ngFor="let headline of headlines">
+        <app-thumbnail [headline]="headline"></app-thumbnail>
+    </div>
+
+    <button>></button>
 </div>
 
-<div *ngFor="let article of articles" class="articles">
-    <app-card [article]=article></app-card>
+<div class="articles">
+    <div *ngFor="let article of articles" class="articles">
+        <app-card [article]=article></app-card>
+    </div>
 </div>

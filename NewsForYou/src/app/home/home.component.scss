@@ -1,3 +1,9 @@
-.articles {
-    
+.banner {
+    display: flex; 
+    justify-content: space-evenly;
+
+    button {
+        background: none;
+        border: none;
+    }
 }

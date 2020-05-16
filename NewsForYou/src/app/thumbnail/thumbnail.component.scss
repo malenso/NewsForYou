@@ -1,0 +1,16 @@
+.thumbnail {
+  margin: 1rem 0.5rem;
+  
+  img,
+  h3 {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  img {
+    margin-right: 0.5rem;
+    object-fit: cover;
+    width: 125px;
+    height: 75px;
+  }
+}
