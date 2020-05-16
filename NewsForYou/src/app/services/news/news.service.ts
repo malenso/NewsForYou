@@ -5,6 +5,8 @@ import { Article } from 'src/app/models/article';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ArticlesResponse } from 'src/app/models/articles-response';
+import { environment } from 'src/environments/environment';
+import { apiKeys } from 'src/apiKeys';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +19,7 @@ export class NewsService {
   ) { }
 
   GetArticles(topic: string): Observable<Article[]> {
-    const key = '';
-    const url = `https://newsapi.org/v2/everything?q=${topic}&apiKey=${key}&language=en`;
+    const url = `${environment.newsApiUrl}/everything?q=${topic}&apiKey=${apiKeys.newsApiKey}&language=en`;
 
     return this.http.get<ArticlesResponse>(url)
       .pipe(
