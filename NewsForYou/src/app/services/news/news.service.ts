@@ -28,7 +28,7 @@ export class NewsService {
   }
 
   getHeadlines(): Observable<Article[]> {
-    const url = `${environment.newsApiUrl}/top-headlines?language=en&apiKey=${apiKeys.newsApiKey}`;
+    const url = `${environment.newsApiUrl}/top-headlines?language=en&apiKey=${apiKeys.newsApiKey}&pageSize=10`;
 
     return this.http.get<ArticlesResponse>(url)
       .pipe(
