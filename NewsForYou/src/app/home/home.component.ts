@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NewsService } from '../services/news/news.service';
+import { Article } from '../models/article';
 
 @Component({
   selector: 'app-home',
@@ -9,17 +10,31 @@ import { NewsService } from '../services/news/news.service';
 })
 
 export class HomeComponent implements OnInit {
-  articles: any[];
+  articles: Article[];
+  headlines: Article[];
 
   constructor(
     private newsService: NewsService
   ) { }
 
   ngOnInit() {
-    this.newsService.GetArticles('happy')
+    this.getArticlesByTopic();
+    this.getHeadlines();
+  }
+
+  getArticlesByTopic() {
+    const topic = 'space';
+
+    this.newsService.getArticlesByTopic(topic)
       .subscribe((response: any) => {
         this.articles = response;
       }, error => console.log(error));
   }
 
+  getHeadlines() {
+    this.newsService.getHeadlines()
+      .subscribe((response: any) => {
+        this.headlines = response;
+      }, error => console.log(error));
+  }
 }

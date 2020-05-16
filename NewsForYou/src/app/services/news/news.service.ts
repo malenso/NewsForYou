@@ -18,12 +18,21 @@ export class NewsService {
     private http: HttpClient
   ) { }
 
-  GetArticles(topic: string): Observable<Article[]> {
-    const url = `${environment.newsApiUrl}/everything?q=${topic}&apiKey=${apiKeys.newsApiKey}&language=en`;
+  getArticlesByTopic(topic: string): Observable<Article[]> {
+    const url = `${environment.newsApiUrl}/everything?q=${topic}&language=en&apiKey=${apiKeys.newsApiKey}`;
 
     return this.http.get<ArticlesResponse>(url)
       .pipe(
         map(data => data.articles)
       );
+  }
+
+  getHeadlines(): Observable<Article[]> {
+    const url = `${environment.newsApiUrl}/top-headlines?language=en&apiKey=${apiKeys.newsApiKey}`;
+
+    return this.http.get<ArticlesResponse>(url)
+      .pipe(
+        map(data => data.articles)
+      )
   }
 }

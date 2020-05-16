@@ -1,3 +1,9 @@
+<div *ngFor="let headline of headlines">
+    <img [src]=headline.urlToImage>
+    <h3>{{headline.title}}</h3>
+    <span>{{headline.description}}</span>
+</div>
+
 <div *ngFor="let article of articles" class="articles">
     <app-card [article]=article></app-card>
 </div>
