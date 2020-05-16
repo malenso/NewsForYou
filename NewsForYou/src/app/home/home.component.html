@@ -1,15 +1,20 @@
-<div class="banner">
-    <button><</button>
-
-    <div *ngFor="let headline of headlines">
-        <app-thumbnail [headline]="headline"></app-thumbnail>
+<div class="content">
+    <div class="articles-wrapper">
+        <!--for each topic passed in, display headline and top 5 articles-->
+        <h2>Today in Space</h2>
+        <div class="articles">
+            <ng-container *ngFor="let article of articles">
+                <app-card [article]=article class="article-card"></app-card>
+            </ng-container>
+        </div>
     </div>
 
-    <button>></button>
-</div>
-
-<div class="articles">
-    <div *ngFor="let article of articles" class="articles">
-        <app-card [article]=article></app-card>
+    <div class="headline-wrapper">
+        <h3>Today's Headlines</h3>
+        <div class="headline-thumbnails">
+            <ng-container *ngFor="let headline of headlines">
+                <app-thumbnail [headline]="headline" class="headline-thumbnail"></app-thumbnail>
+            </ng-container>
+        </div>
     </div>
 </div>

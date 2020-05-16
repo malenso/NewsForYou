@@ -1,7 +1,6 @@
-<div class="article-card">
-    <img [src]='article.urlToImage' alt={{article.description}}>
-    <h2>{{article.title}}</h2>
-    <span>{{article.publishedAt | date}}</span>
-    <span>{{article.description}}</span>
-    <span><a [href]='article.url'>Read More</a></span>
-</div>
+<a href="" class="article-link">
+    <img [src]='article.urlToImage' alt={{article.description}} class="article-image">
+    <h2 class="article-title">{{article.title}}</h2>
+    <span class="article-date">{{article.publishedAt | date}}</span>
+    <span class="article-description">{{article.description}}</span>
+</a>
