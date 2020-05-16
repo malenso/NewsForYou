@@ -18,7 +18,7 @@ export class NewsService {
 
   GetArticles(topic: string): Observable<Article[]> {
     const key = '';
-    const url = `https://newsapi.org/v2/top-headlines?q=${topic}&apiKey=${key}&language=en`;
+    const url = `https://newsapi.org/v2/everything?q=${topic}&apiKey=${key}&language=en`;
 
     return this.http.get<ArticlesResponse>(url)
       .pipe(
