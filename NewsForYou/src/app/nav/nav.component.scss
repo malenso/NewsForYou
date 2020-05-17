@@ -1,7 +1,10 @@
 @import '../../styles/base';
 
 nav {
-    color: white;
+
+    a {
+        color: white;
+    }
 
     .primary {
         background: $primaryColor;
