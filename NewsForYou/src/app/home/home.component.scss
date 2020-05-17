@@ -41,9 +41,15 @@ h2 {
 }
 
 .headline {
-  h3 {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+  &-wrapper {
+    h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
   }
 
   &-thumbnails {
