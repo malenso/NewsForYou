@@ -33,6 +33,6 @@ export class NewsService {
     return this.http.get<ArticlesResponse>(url)
       .pipe(
         map(data => data.articles)
-      )
+      );
   }
 }
