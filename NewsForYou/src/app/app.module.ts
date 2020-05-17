@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './card/card.component';
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 import { ArticleComponent } from './article/article.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ArticleComponent } from './article/article.component';
     HomeComponent,
     CardComponent,
     ThumbnailComponent,
-    ArticleComponent
+    ArticleComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
