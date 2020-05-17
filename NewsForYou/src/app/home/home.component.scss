@@ -1,20 +1,20 @@
 .content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 80% 20%;
   padding: 1rem 2rem;
 
-  .articles-wrapper, .headline-wrapper {
+  .articles-wrapper,
+  .headline-wrapper {
     vertical-align: top;
   }
 }
 
 .articles-wrapper {
   margin: 1rem 0;
-  width: 80%;
 
   .articles {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
 
     h2 {
       display: block;
@@ -26,7 +26,6 @@
       display: inline-block;
       margin: 1rem;
       padding: 1rem;
-      width: 25%;
       transition: transform ease-in-out;
       transition-duration: 100ms;
 
@@ -38,9 +37,6 @@
 }
 
 .headline {
-  &-wrapper {
-    width: 20%;
-  }
   h3 {
     font-weight: 600;
     margin-bottom: 0.5rem;
@@ -49,9 +45,6 @@
   &-thumbnails {
     border: solid #fc620a;
     border-width: 3px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
 
     button {
       background: none;
@@ -60,7 +53,7 @@
   }
 
   &-thumbnail {
+    display: block;
     margin: 1rem 0.5rem;
-    display: flex;
   }
 }

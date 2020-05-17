@@ -3,17 +3,8 @@
     color: initial;
   }
 
-  &-image,
-  &-title {
-    display: inline-block;
-    vertical-align: top;
-  }
-
   &-image {
-    align-self: flex-start;
-    margin-right: 0.5rem;
-    object-fit: cover;
-    width: 100px;
-    height: 75px;
+    margin-bottom: 0.5rem;
+    width: 100%;
   }
 }
