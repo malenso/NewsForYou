@@ -13,10 +13,15 @@ import { apiKeys } from 'src/apiKeys';
 })
 
 export class NewsService {
+  activeArticle: Article;
 
   constructor(
     private http: HttpClient
   ) { }
+
+  setActivePage(article: Article) {
+    this.activeArticle = article;
+  }
 
   getArticlesByTopic(topic: string): Observable<Article[]> {
     const url = `${environment.newsApiUrl}/everything?q=${topic}&language=en&apiKey=${apiKeys.newsApiKey}`;

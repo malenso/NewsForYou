@@ -1,5 +1,20 @@
+@import '../../styles/base';
+
 h2 {
+  display: inline-block;
   padding: 1rem 2rem 0;
+
+  input {
+    background: none;
+    border: none;
+    font-family: $font-family-serif;
+    font-size: 3rem;
+    text-decoration: underline;
+  }
+}
+
+.submit {
+
 }
 
 .content {
@@ -64,6 +79,6 @@ h2 {
 
   &-thumbnail {
     display: block;
-    margin: 1rem 0.5rem;
+    margin: 1rem 0.5rem 2rem;
   }
 }
