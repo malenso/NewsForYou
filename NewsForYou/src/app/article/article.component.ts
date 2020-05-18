@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Article } from '../models/article';
 import { NewsService } from '../services/news/news.service';
 
@@ -8,14 +10,17 @@ import { NewsService } from '../services/news/news.service';
   styleUrls: ['./article.component.scss']
 })
 export class ArticleComponent implements OnInit {
-  @Input() article: Article;
+  article: Article;
+  articleId: string;
 
   constructor(
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
     private newsService: NewsService
   ) { }
 
   ngOnInit(): void {
-    this.article = this.newsService.activeArticle;
+    this.articleId = this.route.snapshot.paramMap.get('id');
+    this.article = this.newsService.getArticleById(this.articleId);
   }
-
 }

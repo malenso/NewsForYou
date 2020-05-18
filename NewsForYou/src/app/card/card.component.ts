@@ -16,14 +16,5 @@ export class CardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.article.id = Math.floor(Math.random() * 100000);
-  }
-
-  getArticleById(id: number): Article {
-    return null;
-  }
-
-  setActivePage() {
-    this.newsService.setActivePage(this.article);
   }
 }
