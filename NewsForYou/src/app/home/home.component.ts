@@ -20,20 +20,21 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getArticlesByTopic();
     this.getHeadlines();
+    this.newsService.articles = this.articles;
   }
 
   getArticlesByTopic() {
     const topic = 'space';
 
     this.newsService.getArticlesByTopic(topic)
-      .subscribe((response: any) => {
+      .subscribe(response => {
         this.articles = response;
       }, error => console.log(error));
   }
 
   getHeadlines() {
     this.newsService.getHeadlines()
-      .subscribe((response: any) => {
+      .subscribe(response => {
         this.headlines = response;
       }, error => console.log(error));
   }

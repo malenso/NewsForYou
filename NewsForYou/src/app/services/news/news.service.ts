@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Article } from 'src/app/models/article';
 import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { map, share } from 'rxjs/operators';
 import { ArticlesResponse } from 'src/app/models/articles-response';
 import { environment } from 'src/environments/environment';
 import { apiKeys } from 'src/apiKeys';
@@ -13,17 +13,12 @@ import { apiKeys } from 'src/apiKeys';
 })
 
 export class NewsService {
-  activeArticle: Article;
+  headlines: Article[];
   articles: Article[];
 
   constructor(
     private http: HttpClient
   ) { }
-
-  getArticleById(id: string): Article {
-    //   return this.articles.filter(article => article.id === id);
-    return null;
-  }
 
   getArticlesByTopic(topic: string): Observable<Article[]> {
     const url = `${environment.newsApiUrl}/everything?q=${topic}&language=en&apiKey=${apiKeys.newsApiKey}`;

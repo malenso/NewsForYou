@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Article } from '../models/article';
 import { NewsService } from '../services/news/news.service';
@@ -14,13 +14,16 @@ export class ArticleComponent implements OnInit {
   articleId: string;
 
   constructor(
+    private readonly newsService: NewsService,
     private readonly route: ActivatedRoute,
-    private readonly router: Router,
-    private newsService: NewsService
   ) { }
 
   ngOnInit(): void {
+    this.getSelectedArticle();
     this.articleId = this.route.snapshot.paramMap.get('id');
-    this.article = this.newsService.getArticleById(this.articleId);
+  }
+
+  getSelectedArticle() {
+    this.article = this.newsService.articles.find(article => article.id == this.articleId);
   }
 }
