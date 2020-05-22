@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Article } from 'src/app/models/article';
 import { Observable } from 'rxjs';
@@ -13,7 +13,6 @@ import { apiKeys } from 'src/apiKeys';
 })
 
 export class NewsService {
-  headlines: Article[];
   articles: Article[];
 
   constructor(
@@ -21,9 +20,12 @@ export class NewsService {
   ) { }
 
   getArticlesByTopic(topic: string): Observable<Article[]> {
-    const url = `/api/everything?q=${topic}&language=en&apiKey=${apiKeys.newsApiKey}`;
-    
-    return this.http.get<any>(url)
+    const url = `/api/everything?q=${topic}&language=en`;
+    const headers = new HttpHeaders(
+      { 'x-api-key': apiKeys.newsApiKey }
+    );
+
+    return this.http.get<any>(url, { headers })
       .pipe(
         map(data => {
           this.articles = data.articles.map(article => {
@@ -42,11 +44,4 @@ export class NewsService {
         })
       );
   }
-
-  // getHeadlines(): Observable<Article[]> {
-  //   return this.http.get<ArticlesResponse>(url)
-  //     .pipe(
-  //       map(data => data.articles)
-  //     );
-  // }
 }

@@ -11,7 +11,6 @@ import { Article } from '../models/article';
 
 export class HomeComponent implements OnInit {
   articles: Article[];
-  headlines: Article[];
 
   constructor(
     private newsService: NewsService
@@ -19,7 +18,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getArticlesByTopic();
-    // this.getHeadlines();
     this.newsService.articles = this.articles;
   }
 
@@ -31,11 +29,4 @@ export class HomeComponent implements OnInit {
         this.articles = response;
       }, error => console.log(error));
   }
-
-  // getHeadlines() {
-  //   this.newsService.getHeadlines()
-  //     .subscribe(response => {
-  //       this.headlines = response;
-  //     }, error => console.log(error));
-  // }
 }
