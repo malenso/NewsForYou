@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  newsApiUrl: 'https://newsapi.org/v2'
 };
 
 /*

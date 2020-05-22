@@ -21,8 +21,8 @@ export class NewsService {
   ) { }
 
   getArticlesByTopic(topic: string): Observable<Article[]> {
-    const url = `${environment.newsApiUrl}/everything?q=${topic}&language=en&apiKey=${apiKeys.newsApiKey}`;
-
+    const url = `/api/everything?q=${topic}&language=en&apiKey=${apiKeys.newsApiKey}`;
+    
     return this.http.get<any>(url)
       .pipe(
         map(data => {
@@ -43,12 +43,10 @@ export class NewsService {
       );
   }
 
-  getHeadlines(): Observable<Article[]> {
-    const url = `${environment.newsApiUrl}/top-headlines?language=en&apiKey=${apiKeys.newsApiKey}&pageSize=5`;
-
-    return this.http.get<ArticlesResponse>(url)
-      .pipe(
-        map(data => data.articles)
-      );
-  }
+  // getHeadlines(): Observable<Article[]> {
+  //   return this.http.get<ArticlesResponse>(url)
+  //     .pipe(
+  //       map(data => data.articles)
+  //     );
+  // }
 }

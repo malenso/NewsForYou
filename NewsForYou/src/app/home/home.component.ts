@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getArticlesByTopic();
-    this.getHeadlines();
+    // this.getHeadlines();
     this.newsService.articles = this.articles;
   }
 
@@ -32,10 +32,10 @@ export class HomeComponent implements OnInit {
       }, error => console.log(error));
   }
 
-  getHeadlines() {
-    this.newsService.getHeadlines()
-      .subscribe(response => {
-        this.headlines = response;
-      }, error => console.log(error));
-  }
+  // getHeadlines() {
+  //   this.newsService.getHeadlines()
+  //     .subscribe(response => {
+  //       this.headlines = response;
+  //     }, error => console.log(error));
+  // }
 }
