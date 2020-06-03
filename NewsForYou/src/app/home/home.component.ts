@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getArticlesByTopic();
-    this.newsService.articles = this.articles;
   }
 
   getArticlesByTopic() {

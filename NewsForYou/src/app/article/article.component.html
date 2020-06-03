@@ -1,2 +1,16 @@
-<h2>{{article.title}}</h2>
-<p>{{article.content}}</p>
+<div *ngIf="article" class="content">
+    <h2>{{article.title}}</h2>
+    <h3>By {{article.author}}</h3>
+    <h4>{{article.publishedAt | date}}</h4>
+    <div class="article-content-wrapper">
+        <a [href]="article.url"><img [src]="article.urlToImage"></a>
+        <span class="article-content">
+            <p>{{article.content}}</p>
+            <a [href]="article.url" class="button-primary" target="_blank">Read More</a>
+        </span>
+    </div>
+</div>
+
+<div *ngIf="!article" class="content">
+    <h2>Hmm...we couldn't find this article...</h2>
+</div>

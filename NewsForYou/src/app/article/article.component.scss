@@ -1,0 +1,17 @@
+.article-content {
+    margin-left: 1rem;
+    
+    &-wrapper {
+        display: grid;
+        grid-template-columns: 33% 66%;
+    }
+}
+
+img {
+    display: inline-block;
+    width: 100%;
+}
+
+p {
+    margin-bottom: 1rem;
+}

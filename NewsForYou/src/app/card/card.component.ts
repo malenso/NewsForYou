@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Article } from '../models/article';
+import { NewsService } from '../services/news/news.service';
 
 @Component({
   selector: 'app-card',
@@ -11,8 +12,13 @@ export class CardComponent implements OnInit {
   @Input() article: Article;
 
   constructor(
+    private newsService: NewsService
   ) { }
 
   ngOnInit() {
+  }
+
+  setActiveArticle(article: Article) {
+    this.newsService.setActiveArticle(article);
   }
 }

@@ -1,4 +1,4 @@
-<a [routerLink]="['article', article.id]" class="article-link">
+<a [routerLink]="['article', article.title]" class="article-link" (click)="setActiveArticle(article)">
     <img [src]='article.urlToImage' alt={{article.description}} class="article-image">
     <h2 class="article-title">{{article.title}}</h2>
     <span class="article-date">{{article.publishedAt | date}}</span>
