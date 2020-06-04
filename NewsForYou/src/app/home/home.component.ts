@@ -28,4 +28,10 @@ export class HomeComponent implements OnInit {
         this.articles = response;
       }, error => console.log(error));
   }
+
+  sort(filter: string) {
+    this.articles = this.articles.sort((a: Article, b: Article) => {
+      return a.publishedAt < b.publishedAt ? -1 : 1;
+    });
+  }
 }
