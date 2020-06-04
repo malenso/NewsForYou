@@ -11,6 +11,8 @@ import { Article } from '../models/article';
 
 export class HomeComponent implements OnInit {
   articles: Article[];
+  filters: string[] = ['relevance', 'title', 'date'];
+  selectedFilter: string;
 
   constructor(
     private newsService: NewsService
@@ -29,9 +31,20 @@ export class HomeComponent implements OnInit {
       }, error => console.log(error));
   }
 
-  sort(filter: string) {
-    this.articles = this.articles.sort((a: Article, b: Article) => {
-      return a.publishedAt < b.publishedAt ? -1 : 1;
-    });
+  sort() {
+    switch (this.selectedFilter) {
+      case 'date':
+        this.articles = this.articles.sort((a: Article, b: Article) => {
+          return a.publishedAt < b.publishedAt ? -1 : 1;
+        });
+        break;
+      case 'title':
+        this.articles = this.articles.sort((a: Article, b: Article) => {
+          return a.title < b.title ? -1 : 1;
+        });
+        break;
+      default:
+        //relevance
+    }
   }
 }
