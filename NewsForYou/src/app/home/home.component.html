@@ -10,10 +10,14 @@
 
 <div class="content">
     <div class="articles-wrapper">
-        <div class="articles">
+        <div *ngIf="articles" class="articles">
             <ng-container *ngFor="let article of articles">
                 <app-card [article]=article class="article-card"></app-card>
             </ng-container>
+        </div>
+
+        <div *ngIf="!articles">
+            <h3>Enter a topic to start getting news for you!</h3>
         </div>
     </div>
 </div>
