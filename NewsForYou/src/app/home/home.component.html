@@ -1,8 +1,13 @@
-<h2>Today in <input type="text" id="topic" name="topic" value="Space"></h2>
+<h2>Today in
+    <input type="text" id="topic" name="topic" [(ngModel)]="articleTopic">
+</h2>
+<button type="submit" (click)="getArticlesByTopic()">Submit</button>
+
 <label for="sort">Sort By:</label>
 <select [(ngModel)]='selectedFilter' name="sort" (change)="sort()">
     <option *ngFor="let filter of filters">{{filter}}</option>
 </select>
+
 <div class="content">
     <div class="articles-wrapper">
         <div class="articles">

@@ -13,19 +13,17 @@ export class HomeComponent implements OnInit {
   articles: Article[];
   filters: string[] = ['relevance', 'title', 'date'];
   selectedFilter: string;
+  articleTopic: string;
 
   constructor(
     private newsService: NewsService
   ) { }
 
   ngOnInit() {
-    this.getArticlesByTopic();
   }
 
   getArticlesByTopic() {
-    const topic = 'space';
-
-    this.newsService.getArticlesByTopic(topic)
+    this.newsService.getArticlesByTopic(this.articleTopic)
       .subscribe(response => {
         this.articles = response;
       }, error => console.log(error));
@@ -44,7 +42,7 @@ export class HomeComponent implements OnInit {
         });
         break;
       default:
-        //relevance
+      //relevance
     }
   }
 }
