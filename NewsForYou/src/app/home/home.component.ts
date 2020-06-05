@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   filters: string[] = ['relevance', 'title', 'date'];
   selectedFilter: string;
   articleTopic: string;
-
+  originalArticles: Article[];
   constructor(
     private newsService: NewsService
   ) { }
@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
     this.newsService.getArticlesByTopic(this.articleTopic)
       .subscribe(response => {
         this.articles = response;
+        this.originalArticles = [...response];
       }, error => console.log(error));
   }
 
@@ -42,7 +43,7 @@ export class HomeComponent implements OnInit {
         });
         break;
       default:
-      //relevance
+        this.articles = this.originalArticles;
     }
   }
 }
