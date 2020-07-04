@@ -1,14 +1,16 @@
 <h2>Today in
     <span class="article-topic">
-        <input type="text" id="topic" name="topic" [(ngModel)]="articleTopic" autocomplete="off">
+        <input type="text" id="topic" name="topic" [formControl]="articleTopic" autocomplete="off">
     </span>
     <button type="submit" class="button-primary" (click)="getArticlesByTopic()">Submit</button>
 </h2>
 
-<label for="sort">Sort By:</label>
-<select [(ngModel)]='selectedFilter' name="sort" (change)="sort()">
-    <option *ngFor="let filter of filters">{{filter}}</option>
-</select>
+<div *ngIf="articles">
+    <label for="sort">Sort By:</label>
+    <select name="sort" [formControl]="selectedFilter" (change)="sort()">
+        <option *ngFor="let filter of filters">{{filter}}</option>
+    </select>
+</div>
 
 <div class="content">
     <div class="articles-wrapper">

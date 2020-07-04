@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { NewsService } from '../services/news/news.service';
 import { Article } from '../models/article';
@@ -12,9 +13,10 @@ import { Article } from '../models/article';
 export class HomeComponent implements OnInit {
   articles: Article[];
   filters: string[] = ['relevance', 'title', 'date'];
-  selectedFilter: string;
-  articleTopic: string;
+  selectedFilter = new FormControl('');
+  articleTopic = new FormControl('');
   originalArticles: Article[];
+
   constructor(
     private newsService: NewsService
   ) { }
@@ -23,7 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   getArticlesByTopic() {
-    this.newsService.getArticlesByTopic(this.articleTopic)
+    this.newsService.getArticlesByTopic(this.articleTopic.value)
       .subscribe(response => {
         this.articles = response;
         this.originalArticles = [...response];
@@ -31,7 +33,7 @@ export class HomeComponent implements OnInit {
   }
 
   sort() {
-    switch (this.selectedFilter) {
+    switch (this.selectedFilter.value) {
       case 'date':
         this.articles = this.articles.sort((a: Article, b: Article) => {
           return a.publishedAt < b.publishedAt ? -1 : 1;
