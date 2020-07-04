@@ -12,7 +12,7 @@ import { Article } from '../models/article';
 
 export class HomeComponent implements OnInit {
   articles: Article[];
-  filters: string[] = ['relevance', 'title', 'date'];
+  filters: string[] = ['Relevance', 'Title', 'Date'];
   selectedFilter = new FormControl('');
   articleTopic = new FormControl('');
   originalArticles: Article[];

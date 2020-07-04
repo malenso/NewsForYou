@@ -5,7 +5,7 @@
     <button type="submit" class="button-primary" (click)="getArticlesByTopic()">Submit</button>
 </h2>
 
-<div *ngIf="articles">
+<div class="filter" *ngIf="articles">
     <label for="sort">Sort By:</label>
     <select name="sort" [formControl]="selectedFilter" (change)="sort()">
         <option *ngFor="let filter of filters">{{filter}}</option>
