@@ -7,7 +7,6 @@ import { Article } from '../models/article';
 export class FilterPipe implements PipeTransform {
 
   transform(articles: Article[], filter: string): Article[] {
-
     switch (filter) {
       case 'Date':
         articles = articles.sort((a: Article, b: Article) => {
@@ -19,10 +18,14 @@ export class FilterPipe implements PipeTransform {
           return a.title < b.title ? -1 : 1;
         });
         break;
+      case 'Relevance':
+        articles = articles.sort((a: Article, b: Article) => {
+          return a.index < b.index ? -1 : 1;
+        });
+        break;
       default:
         break;
     }
-
     return articles;
   }
 }

@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 
 export class HomeComponent implements OnInit {
   filters: string[] = ['Relevance', 'Title', 'Date'];
-  selectedFilter = new FormControl('Relevance');
+  selectedFilter = new FormControl('');
   articleTopic = new FormControl('');
   articles$: Observable<Article[]>;
 

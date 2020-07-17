@@ -7,4 +7,5 @@ export interface Article {
     publishedAt: Date;
     content: string;
     id: string;
+    index: number;
 }

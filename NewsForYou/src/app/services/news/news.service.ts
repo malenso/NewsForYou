@@ -11,6 +11,7 @@ import { apiKeys } from 'src/apiKeys';
 
 export class NewsService {
   activeArticle: Article;
+  articles: Article[];
 
   constructor(
     private http: HttpClient
@@ -29,7 +30,7 @@ export class NewsService {
     return this.http.get<any>(url, { headers })
       .pipe(
         map(data => {
-          return data.articles.map(article => {
+          this.articles = data.articles.map((article, index) => {
             return {
               author: article.author,
               title: article.title,
@@ -38,8 +39,10 @@ export class NewsService {
               urlToImage: article.urlToImage,
               publishedAt: article.publishedAt,
               content: article.content,
+              index
             };
           });
+          return this.articles;
         }),
         share()
       );
