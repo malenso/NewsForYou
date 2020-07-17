@@ -11,6 +11,7 @@ import { CardComponent } from './card/card.component';
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 import { ArticleComponent } from './article/article.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ThumbnailComponent,
     ArticleComponent,
     PageNotFoundComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

@@ -5,23 +5,23 @@
     <button type="submit" class="button-primary" (click)="getArticlesByTopic()">Submit</button>
 </h2>
 
-<div class="filter" *ngIf="articles">
+<div class="filter" *ngIf="articles$">
     <label for="sort">Sort By:</label>
-    <select name="sort" [formControl]="selectedFilter" (change)="sort()">
+    <select name="sort" [formControl]="selectedFilter">
         <option *ngFor="let filter of filters">{{filter}}</option>
     </select>
 </div>
 
 <div class="content">
     <div class="articles-wrapper">
-        <div *ngIf="articles" class="articles">
-            <ng-container *ngFor="let article of articles">
+        <div *ngIf="articles$" class="articles">
+            <ng-container *ngFor="let article of articles$ | async | filter: selectedFilter.value">
                 <app-card [article]=article class="article-card"></app-card>
             </ng-container>
         </div>
 
-        <div *ngIf="!articles">
-            <h3>Enter a topic to start getting news for you!</h3>
+        <div *ngIf="!articles$">
+            <h3>Enter a topic to start getting news your news!</h3>
         </div>
     </div>
 </div>

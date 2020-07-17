@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 
 import { NewsService } from '../services/news/news.service';
 import { Article } from '../models/article';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,10 @@ import { Article } from '../models/article';
 })
 
 export class HomeComponent implements OnInit {
-  articles: Article[];
   filters: string[] = ['Relevance', 'Title', 'Date'];
-  selectedFilter = new FormControl('');
+  selectedFilter = new FormControl('Relevance');
   articleTopic = new FormControl('');
-  originalArticles: Article[];
+  articles$: Observable<Article[]>;
 
   constructor(
     private newsService: NewsService
@@ -25,27 +25,6 @@ export class HomeComponent implements OnInit {
   }
 
   getArticlesByTopic() {
-    this.newsService.getArticlesByTopic(this.articleTopic.value)
-      .subscribe(response => {
-        this.articles = response;
-        this.originalArticles = [...response];
-      }, error => console.log(error));
-  }
-
-  sort() {
-    switch (this.selectedFilter.value) {
-      case 'date':
-        this.articles = this.articles.sort((a: Article, b: Article) => {
-          return a.publishedAt < b.publishedAt ? -1 : 1;
-        });
-        break;
-      case 'title':
-        this.articles = this.articles.sort((a: Article, b: Article) => {
-          return a.title < b.title ? -1 : 1;
-        });
-        break;
-      default:
-        this.articles = this.originalArticles;
-    }
+    this.articles$ = this.newsService.getArticlesByTopic(this.articleTopic.value);
   }
 }

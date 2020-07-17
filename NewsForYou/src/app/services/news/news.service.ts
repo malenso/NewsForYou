@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Article } from 'src/app/models/article';
-import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 import { apiKeys } from 'src/apiKeys';
 
@@ -11,7 +10,6 @@ import { apiKeys } from 'src/apiKeys';
 })
 
 export class NewsService {
-  articleObserver = new Observable<Article[]>();
   activeArticle: Article;
 
   constructor(
@@ -28,7 +26,7 @@ export class NewsService {
       { 'x-api-key': apiKeys.newsApiKey }
     );
 
-    this.articleObserver = this.http.get<any>(url, { headers })
+    return this.http.get<any>(url, { headers })
       .pipe(
         map(data => {
           return data.articles.map(article => {
@@ -45,7 +43,5 @@ export class NewsService {
         }),
         share()
       );
-
-    return this.articleObserver;
   }
 }
