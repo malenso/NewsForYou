@@ -20,9 +20,10 @@ export class ArticleComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.currentArticleIndex = params.get('index');
     });
+    const articles: Article[] = JSON.parse(sessionStorage.getItem('articles'));
 
-    const articles = JSON.parse(localStorage.getItem('articles'));
-    this.article = articles.find(article =>
-      !!article.index.toString === !!this.currentArticleIndex.toString);
+    this.article = articles.find(
+      article => article.index.toString() === this.currentArticleIndex,
+    );
   }
 }
