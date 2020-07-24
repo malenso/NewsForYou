@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { NewsService } from '../services/news/news.service';
 import { Article } from '../models/article';
@@ -14,17 +14,24 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   filters: string[] = ['Relevance', 'Title', 'Date'];
   selectedFilter = new FormControl('');
-  articleTopic = new FormControl('');
-  articles$: Observable<Article[]>;
+  articles: Article[];
+  articleTopic = new FormControl(sessionStorage.getItem('topic'));
 
   constructor(
     private newsService: NewsService
   ) { }
 
   ngOnInit() {
+    if (sessionStorage.length > 0) {
+      this.articles = JSON.parse(sessionStorage.getItem('articles'));
+    }
   }
 
   getArticlesByTopic() {
-    this.articles$ = this.newsService.getArticlesByTopic(this.articleTopic.value);
+    sessionStorage.setItem('topic', this.articleTopic.value);
+
+    this.newsService.getArticlesByTopic(this.articleTopic.value).subscribe(response => {
+      this.articles = response;
+    });
   }
 }
