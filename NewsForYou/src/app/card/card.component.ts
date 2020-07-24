@@ -8,17 +8,6 @@ import { NewsService } from '../services/news/news.service';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   @Input() article: Article;
-
-  constructor(
-    private newsService: NewsService
-  ) { }
-
-  ngOnInit() {
-  }
-
-  setActiveArticle(article: Article) {
-    this.newsService.setActiveArticle(article);
-  }
 }

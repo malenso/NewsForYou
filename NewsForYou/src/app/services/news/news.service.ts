@@ -17,10 +17,6 @@ export class NewsService {
     private http: HttpClient
   ) { }
 
-  setActiveArticle(article: Article) {
-    this.activeArticle = article;
-  }
-
   getArticlesByTopic(topic: string) {
     const url = `/api/everything?q=${topic}&language=en`;
     const headers = new HttpHeaders(
