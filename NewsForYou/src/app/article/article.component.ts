@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Article } from '../models/article';
-import { NewsService } from '../services/news/news.service';
 
 @Component({
   selector: 'app-article',
@@ -14,7 +13,6 @@ export class ArticleComponent implements OnInit {
   currentArticleIndex: string;
 
   constructor(
-    private readonly newsService: NewsService,
     private readonly route: ActivatedRoute,
   ) { }
 
@@ -23,10 +21,8 @@ export class ArticleComponent implements OnInit {
       this.currentArticleIndex = params.get('index');
     });
 
-    console.log(this.currentArticleIndex);
-    console.log(this.newsService.articles);
-
-    this.article = this.newsService.articles.find(article =>
+    const articles = JSON.parse(localStorage.getItem('articles'));
+    this.article = articles.find(article =>
       !!article.index.toString === !!this.currentArticleIndex.toString);
   }
 }

@@ -38,6 +38,7 @@ export class NewsService {
               index
             };
           });
+          window.localStorage.setItem('articles', JSON.stringify(this.articles));
           return this.articles;
         }),
         share()
