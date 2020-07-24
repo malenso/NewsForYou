@@ -1,10 +1,15 @@
 .article-content {
     margin-left: 1rem;
-    
+
     &-wrapper {
         display: grid;
         grid-template-columns: 33% 66%;
+        grid-column-start: 1;
     }
+}
+
+.author, .publish-date {
+    grid-column-start: 1;
 }
 
 img {

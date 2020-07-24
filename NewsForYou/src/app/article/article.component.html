@@ -1,7 +1,7 @@
 <div *ngIf="article" class="content">
     <h2>{{article.title}}</h2>
-    <h3>By {{article.author}}</h3>
-    <h4>{{article.publishedAt | date}}</h4>
+    <h3 class="author">By {{article.author}}</h3>
+    <h4 class="publish-date">{{article.publishedAt | date}}</h4>
     <div class="article-content-wrapper">
         <a [href]="article.url"><img [src]="article.urlToImage"></a>
         <span class="article-content">
