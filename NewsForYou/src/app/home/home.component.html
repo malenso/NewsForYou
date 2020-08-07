@@ -1,6 +1,7 @@
 <h2>Today in
     <span class="article-topic">
-        <input type="text" id="topic" name="topic" [formControl]="articleTopic" autocomplete="off" (keyup.enter)="getArticlesByTopic()">
+        <input type="text" id="topic" name="topic" [formControl]="articleTopic" autocomplete="off"
+            (keyup.enter)="getArticlesByTopic()">
     </span>
     <button type="submit" class="button-primary" (click)="getArticlesByTopic()">Submit</button>
 </h2>
