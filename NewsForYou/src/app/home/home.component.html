@@ -9,7 +9,7 @@
 <div class="filter" *ngIf="articles">
     <label for="sort">Sort By:</label>
     <select id="sort" [formControl]="selectedFilter" (click)="setSelectedFilter()">
-        <option *ngFor="let filter of filters">{{filter}}</option>
+        <option *ngFor="let filter of filters" [value]="filter">{{filter}}</option>
     </select>
 </div>
 

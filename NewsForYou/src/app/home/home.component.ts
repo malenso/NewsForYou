@@ -12,7 +12,7 @@ import { Article } from '../models/article';
 
 export class HomeComponent implements OnInit {
   filters: string[] = ['Relevance', 'Title', 'Date'];
-  selectedFilter = new FormControl();
+  selectedFilter = new FormControl('Relevance');
   articleTopic = new FormControl();
   articles: Article[];
 
@@ -21,20 +21,25 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-      this.articleTopic.setValue(sessionStorage.getItem('topic'));
-      this.articles = JSON.parse(sessionStorage.getItem('articles'));
-      this.selectedFilter.setValue(sessionStorage.getItem('filter'));
+    this.articleTopic.setValue(sessionStorage.getItem('topic'));
+    this.articles = JSON.parse(sessionStorage.getItem('articles'));
+    this.selectedFilter.setValue(sessionStorage.getItem('filter'));
   }
 
-  getArticlesByTopic() {
+  getArticlesByTopic(): void {
+    this.resetUserInput();
     sessionStorage.setItem('topic', this.articleTopic.value);
-
     this.newsService.getArticlesByTopic(this.articleTopic.value).subscribe(response => {
       this.articles = response;
     });
   }
 
-  setSelectedFilter() {
+  setSelectedFilter(): void {
     sessionStorage.setItem('filter', this.selectedFilter.value);
+  }
+
+  resetUserInput(): void {
+    sessionStorage.clear();
+    this.selectedFilter.setValue('Relevance');
   }
 }
