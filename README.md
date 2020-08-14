@@ -12,8 +12,17 @@
 - Initialize news service in the constructor...
 
 - **Problem:** How to save http response from into a variable that's available to all components?<br>
-**Solution**: WIP, saved article response to session storage and can access it from anywhere
+**Solution**: Saved article response to session storage and can access it from anywhere
 
 - **Problem:** Suddenly getting cors issue when calling to API<br>
 **Solution:** Created proxy rewrite rules for running locally
 
+- [ngModel] is the deprecated data binding (as of Angular 6), use Angular forms instead
+
+- Need Reactive Form Modules package when using form builder to set default value for dropdown
+
+- **Problem:** Using the async pipe in the sorting dropdown doesn't seem feasible<br>
+- **Solution:** Created custom filter and passed in filter value 
+
+- **Problem:** On page refresh, dropdown sort selection is resetting to default value even when sort order is preserved
+- **Solution:** need to use [value] to preserve selection
